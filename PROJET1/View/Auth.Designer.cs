@@ -128,6 +128,7 @@ namespace PROJET1.View
             this.btnLogin.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnLogin.UseAccentColor = false;
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnLoginAnnuler
             // 
@@ -149,6 +150,7 @@ namespace PROJET1.View
             this.btnLoginAnnuler.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnLoginAnnuler.UseAccentColor = false;
             this.btnLoginAnnuler.UseVisualStyleBackColor = true;
+            this.btnLoginAnnuler.Click += new System.EventHandler(this.btnLoginAnnuler_Click);
             // 
             // lblLoginInfo
             // 

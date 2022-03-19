@@ -27,11 +27,36 @@ namespace PROJET1.View
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue700, Primary.Blue900, Primary.Blue500, Accent.LightBlue200, TextShade.WHITE);
             Init();
         }
+
         public void Init()
         {
             lblLoginInfo.Visible = false;
         }
 
-   
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if(txtLogin.Text == "" || txtPwd.Text == "")
+            {
+                lblLoginInfo.Text = "Veuillez renseigner tous les champs";
+                lblLoginInfo.Visible = true;
+            }
+            else
+            {
+                lblLoginInfo.Text = "";
+                lblLoginInfo.Visible = false;
+            }
+        }
+
+        private void btnLoginAnnuler_Click(object sender, EventArgs e)
+        {
+            
+           
+          var result =  MessageBox.Show(this, "Voulez-vous quitter l'application ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+            if(result == DialogResult.Yes)
+            {
+                System.Windows.Forms.Application.Exit();
+            }
+        }
+
     }
 }
