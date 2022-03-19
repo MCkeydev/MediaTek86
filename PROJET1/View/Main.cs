@@ -11,9 +11,9 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 namespace PROJET1.View
 {
-    public partial class Form1 : MaterialForm
+    public partial class Main : MaterialForm
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
         }
