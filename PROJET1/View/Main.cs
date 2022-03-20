@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Windows.Forms;
-using MaterialSkin;
-using MaterialSkin.Controls;
-using System.Diagnostics;
 namespace PROJET1.View
 {
     public partial class Main : MaterialForm
@@ -35,7 +26,9 @@ namespace PROJET1.View
             }
             else
             {
-                lblAjoutInfo.Text = "Veuillez renseigner tous les champs";
+                MaterialSnackBar message = new MaterialSnackBar("Veuillez renseigner tous les champs", "OK", true);
+                message.Show(this);
+                
             }
         }
 
@@ -69,6 +62,26 @@ namespace PROJET1.View
             {
                 return true;
             }
+        }
+
+        private void btnAbsences_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedTab = tabAb;
+        }
+
+        private void materialLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grpAjout_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

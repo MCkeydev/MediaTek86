@@ -94,7 +94,7 @@ namespace PROJET1.View
             this.txtPwd.MaxLength = 32767;
             this.txtPwd.MouseState = MaterialSkin.MouseState.OUT;
             this.txtPwd.Name = "txtPwd";
-            this.txtPwd.PasswordChar = '\0';
+            this.txtPwd.PasswordChar = '●';
             this.txtPwd.PrefixSuffixText = null;
             this.txtPwd.ReadOnly = false;
             this.txtPwd.RightToLeft = System.Windows.Forms.RightToLeft.No;
