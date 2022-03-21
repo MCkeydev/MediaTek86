@@ -6,18 +6,25 @@ using System.Threading.Tasks;
 using PROJET1.Dal;
 using PROJET1.View;
 using System.Diagnostics;
+using PROJET1.Model;
 /// <summary>
 /// Package du controlleur
 /// </summary>
 namespace PROJET1.Controller
 {
+    /// <summary>
+    /// Controlleur de l'application.
+    /// </summary>
     public class Controle
     {
         private readonly FrmAuth FrmAuth;
+        private readonly Main FrmMain;
         public Controle()
         {
-            this.FrmAuth = new FrmAuth(this);
-            this.FrmAuth.ShowDialog();
+            this.FrmMain = new Main(this);
+            this.FrmMain.ShowDialog();
+            //this.FrmAuth = new FrmAuth(this);
+            //this.FrmAuth.ShowDialog();
         }
         /// <summary>
         /// Appelle la méthode Authentification d'Acces donnees,
@@ -32,7 +39,7 @@ namespace PROJET1.Controller
             if(AccesDonnees.Authentification(login, pwd))
             {
                 FrmAuth.Hide();
-                (new Main()).ShowDialog();
+                (new Main(this)).ShowDialog();
                 return true;
             }
             else
@@ -40,6 +47,13 @@ namespace PROJET1.Controller
                 return false;
             }
             
+        }
+
+        public List<Personnel> GetLesPersonnels()
+        {
+            
+            
+            return AccesDonnees.GetLesPersonnels();
         }
     }
 }

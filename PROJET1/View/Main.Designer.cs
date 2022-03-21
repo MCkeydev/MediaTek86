@@ -46,28 +46,28 @@ namespace PROJET1.View
             this.tabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPersonnel = new System.Windows.Forms.TabPage();
             this.tabAb = new System.Windows.Forms.TabPage();
-            this.lblDateMotif = new MaterialSkin.Controls.MaterialLabel();
-            this.materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
-            this.lblDateFin = new MaterialSkin.Controls.MaterialLabel();
+            this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            this.btnAbSave = new MaterialSkin.Controls.MaterialButton();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lblDateDeb = new MaterialSkin.Controls.MaterialLabel();
             this.btnAbCancel = new MaterialSkin.Controls.MaterialButton();
+            this.lblDateFin = new MaterialSkin.Controls.MaterialLabel();
+            this.lblDateMotif = new MaterialSkin.Controls.MaterialLabel();
+            this.materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
             this.btnAbSupprimer = new MaterialSkin.Controls.MaterialButton();
             this.btnAbModifier = new MaterialSkin.Controls.MaterialButton();
             this.btnAbAjouter = new MaterialSkin.Controls.MaterialButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lblAbsenceNom = new MaterialSkin.Controls.MaterialLabel();
             this.lblAbsence1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.btnAbSave = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataPersonnel)).BeginInit();
             this.grpAjout.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPersonnel.SuspendLayout();
             this.tabAb.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.materialCard1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataPersonnel
@@ -79,6 +79,7 @@ namespace PROJET1.View
             this.dataPersonnel.Name = "dataPersonnel";
             this.dataPersonnel.Size = new System.Drawing.Size(501, 380);
             this.dataPersonnel.TabIndex = 0;
+           
             // 
             // btnAjouter
             // 
@@ -341,7 +342,6 @@ namespace PROJET1.View
             this.grpAjout.TabIndex = 5;
             this.grpAjout.Title = "AJOUT";
             this.grpAjout.ValidationButtonText = "";
-           
             // 
             // tabControl
             // 
@@ -389,6 +389,103 @@ namespace PROJET1.View
             this.tabAb.TabIndex = 1;
             this.tabAb.Text = "Absences";
             // 
+            // materialCard1
+            // 
+            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Controls.Add(this.btnAbSave);
+            this.materialCard1.Controls.Add(this.dateTimePicker2);
+            this.materialCard1.Controls.Add(this.dateTimePicker1);
+            this.materialCard1.Controls.Add(this.lblDateDeb);
+            this.materialCard1.Controls.Add(this.btnAbCancel);
+            this.materialCard1.Controls.Add(this.lblDateFin);
+            this.materialCard1.Controls.Add(this.lblDateMotif);
+            this.materialCard1.Controls.Add(this.materialComboBox1);
+            this.materialCard1.Depth = 0;
+            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard1.Location = new System.Drawing.Point(277, 84);
+            this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard1.Name = "materialCard1";
+            this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard1.Size = new System.Drawing.Size(470, 316);
+            this.materialCard1.TabIndex = 11;
+            // 
+            // btnAbSave
+            // 
+            this.btnAbSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAbSave.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Dense;
+            this.btnAbSave.Depth = 0;
+            this.btnAbSave.HighEmphasis = true;
+            this.btnAbSave.Icon = null;
+            this.btnAbSave.Location = new System.Drawing.Point(359, 260);
+            this.btnAbSave.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAbSave.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAbSave.Name = "btnAbSave";
+            this.btnAbSave.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAbSave.Size = new System.Drawing.Size(104, 36);
+            this.btnAbSave.TabIndex = 13;
+            this.btnAbSave.Text = "Confirmer";
+            this.btnAbSave.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.btnAbSave.UseAccentColor = false;
+            this.btnAbSave.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(246, 104);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.TabIndex = 12;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(17, 104);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 11;
+            // 
+            // lblDateDeb
+            // 
+            this.lblDateDeb.AutoSize = true;
+            this.lblDateDeb.Depth = 0;
+            this.lblDateDeb.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDateDeb.Location = new System.Drawing.Point(14, 82);
+            this.lblDateDeb.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDateDeb.Name = "lblDateDeb";
+            this.lblDateDeb.Size = new System.Drawing.Size(80, 19);
+            this.lblDateDeb.TabIndex = 7;
+            this.lblDateDeb.Text = "Date Début";
+            // 
+            // btnAbCancel
+            // 
+            this.btnAbCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAbCancel.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Dense;
+            this.btnAbCancel.Depth = 0;
+            this.btnAbCancel.HighEmphasis = true;
+            this.btnAbCancel.Icon = null;
+            this.btnAbCancel.Location = new System.Drawing.Point(264, 260);
+            this.btnAbCancel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAbCancel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAbCancel.Name = "btnAbCancel";
+            this.btnAbCancel.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAbCancel.Size = new System.Drawing.Size(87, 36);
+            this.btnAbCancel.TabIndex = 2;
+            this.btnAbCancel.Text = "Annuler";
+            this.btnAbCancel.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.btnAbCancel.UseAccentColor = true;
+            this.btnAbCancel.UseVisualStyleBackColor = true;
+            // 
+            // lblDateFin
+            // 
+            this.lblDateFin.AutoSize = true;
+            this.lblDateFin.Depth = 0;
+            this.lblDateFin.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDateFin.Location = new System.Drawing.Point(243, 82);
+            this.lblDateFin.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDateFin.Name = "lblDateFin";
+            this.lblDateFin.Size = new System.Drawing.Size(57, 19);
+            this.lblDateFin.TabIndex = 8;
+            this.lblDateFin.Text = "Date fin";
+            // 
             // lblDateMotif
             // 
             this.lblDateMotif.AutoSize = true;
@@ -422,50 +519,6 @@ namespace PROJET1.View
             this.materialComboBox1.Size = new System.Drawing.Size(426, 49);
             this.materialComboBox1.StartIndex = 0;
             this.materialComboBox1.TabIndex = 9;
-            // 
-            // lblDateFin
-            // 
-            this.lblDateFin.AutoSize = true;
-            this.lblDateFin.Depth = 0;
-            this.lblDateFin.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblDateFin.Location = new System.Drawing.Point(243, 82);
-            this.lblDateFin.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblDateFin.Name = "lblDateFin";
-            this.lblDateFin.Size = new System.Drawing.Size(57, 19);
-            this.lblDateFin.TabIndex = 8;
-            this.lblDateFin.Text = "Date fin";
-         
-            // 
-            // lblDateDeb
-            // 
-            this.lblDateDeb.AutoSize = true;
-            this.lblDateDeb.Depth = 0;
-            this.lblDateDeb.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblDateDeb.Location = new System.Drawing.Point(14, 82);
-            this.lblDateDeb.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblDateDeb.Name = "lblDateDeb";
-            this.lblDateDeb.Size = new System.Drawing.Size(80, 19);
-            this.lblDateDeb.TabIndex = 7;
-            this.lblDateDeb.Text = "Date Début";
-            // 
-            // btnAbCancel
-            // 
-            this.btnAbCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAbCancel.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Dense;
-            this.btnAbCancel.Depth = 0;
-            this.btnAbCancel.HighEmphasis = true;
-            this.btnAbCancel.Icon = null;
-            this.btnAbCancel.Location = new System.Drawing.Point(264, 260);
-            this.btnAbCancel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnAbCancel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnAbCancel.Name = "btnAbCancel";
-            this.btnAbCancel.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAbCancel.Size = new System.Drawing.Size(87, 36);
-            this.btnAbCancel.TabIndex = 2;
-            this.btnAbCancel.Text = "Annuler";
-            this.btnAbCancel.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.btnAbCancel.UseAccentColor = true;
-            this.btnAbCancel.UseVisualStyleBackColor = true;
             // 
             // btnAbSupprimer
             // 
@@ -560,61 +613,6 @@ namespace PROJET1.View
             this.lblAbsence1.Size = new System.Drawing.Size(98, 19);
             this.lblAbsence1.TabIndex = 0;
             this.lblAbsence1.Text = "Absences de :";
-            
-            // 
-            // materialCard1
-            // 
-            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard1.Controls.Add(this.btnAbSave);
-            this.materialCard1.Controls.Add(this.dateTimePicker2);
-            this.materialCard1.Controls.Add(this.dateTimePicker1);
-            this.materialCard1.Controls.Add(this.lblDateDeb);
-            this.materialCard1.Controls.Add(this.btnAbCancel);
-            this.materialCard1.Controls.Add(this.lblDateFin);
-            this.materialCard1.Controls.Add(this.lblDateMotif);
-            this.materialCard1.Controls.Add(this.materialComboBox1);
-            this.materialCard1.Depth = 0;
-            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(277, 84);
-            this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
-            this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCard1.Name = "materialCard1";
-            this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(470, 316);
-            this.materialCard1.TabIndex = 11;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(17, 104);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 11;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(246, 104);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 12;
-            // 
-            // btnAbSave
-            // 
-            this.btnAbSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAbSave.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Dense;
-            this.btnAbSave.Depth = 0;
-            this.btnAbSave.HighEmphasis = true;
-            this.btnAbSave.Icon = null;
-            this.btnAbSave.Location = new System.Drawing.Point(359, 260);
-            this.btnAbSave.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnAbSave.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnAbSave.Name = "btnAbSave";
-            this.btnAbSave.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAbSave.Size = new System.Drawing.Size(104, 36);
-            this.btnAbSave.TabIndex = 13;
-            this.btnAbSave.Text = "Confirmer";
-            this.btnAbSave.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.btnAbSave.UseAccentColor = false;
-            this.btnAbSave.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
@@ -636,9 +634,9 @@ namespace PROJET1.View
             this.tabPersonnel.PerformLayout();
             this.tabAb.ResumeLayout(false);
             this.tabAb.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -1,13 +1,23 @@
 ﻿using MaterialSkin.Controls;
+using PROJET1.Controller;
+using PROJET1.Model;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Diagnostics;
 namespace PROJET1.View
 {
     public partial class Main : MaterialForm
     {
-        public Main()
+        private BindingSource bdsPersonnel = new BindingSource();
+        private BindingSource bdsService;
+
+        private Controle controle;
+        public Main(Controle controle)
         {
+            this.controle = controle;
             InitializeComponent();
+            InitLesPersonnels();
         }
 
       
@@ -69,8 +79,17 @@ namespace PROJET1.View
             tabControl.SelectedTab = tabAb;
         }
 
+        private void InitLesPersonnels()
+        {
+            List<Personnel> lesPersonnels = controle.GetLesPersonnels();
+           ;
+            bdsPersonnel.DataSource = lesPersonnels;
+            dataPersonnel.DataSource = bdsPersonnel;
+            dataPersonnel.Columns["idpersonnel"].Visible = false;
+            dataPersonnel.Columns["idservice"].Visible = false;
+            dataPersonnel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
 
-
-    
+      
     }
 }
