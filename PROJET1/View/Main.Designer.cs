@@ -341,7 +341,7 @@ namespace PROJET1.View
             this.grpAjout.TabIndex = 5;
             this.grpAjout.Title = "AJOUT";
             this.grpAjout.ValidationButtonText = "";
-            this.grpAjout.Paint += new System.Windows.Forms.PaintEventHandler(this.grpAjout_Paint);
+           
             // 
             // tabControl
             // 
@@ -434,7 +434,7 @@ namespace PROJET1.View
             this.lblDateFin.Size = new System.Drawing.Size(57, 19);
             this.lblDateFin.TabIndex = 8;
             this.lblDateFin.Text = "Date fin";
-            this.lblDateFin.Click += new System.EventHandler(this.materialLabel2_Click);
+         
             // 
             // lblDateDeb
             // 
@@ -560,7 +560,7 @@ namespace PROJET1.View
             this.lblAbsence1.Size = new System.Drawing.Size(98, 19);
             this.lblAbsence1.TabIndex = 0;
             this.lblAbsence1.Text = "Absences de :";
-            this.lblAbsence1.Click += new System.EventHandler(this.materialLabel1_Click);
+            
             // 
             // materialCard1
             // 

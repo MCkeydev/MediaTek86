@@ -13,7 +13,9 @@ using PROJET1.Controller;
 
 namespace PROJET1.View
 
-{
+{/// <summary>
+/// Formulaire WinForms qui permet l'authentification d'un utilisateur.
+/// </summary>
     public partial class FrmAuth : MaterialForm
     {
         private readonly Controle controle;
@@ -28,6 +30,9 @@ namespace PROJET1.View
             Init();
         }
 
+        /// <summary>
+        /// Cacher le label permettant d'informer l'utilisateur.
+        /// </summary>
         public void Init()
         {
             lblLoginInfo.Visible = false;

@@ -8,11 +8,11 @@ namespace PROJET1.Controller
 {
     public class Controle
     {
-        private readonly FrmAuth frmAuth;
+        private readonly FrmAuth FrmAuth;
         public Controle()
         {
-            this.frmAuth = new FrmAuth(this);
-            this.frmAuth.ShowDialog();
+            this.FrmAuth = new FrmAuth(this);
+            this.FrmAuth.ShowDialog();
         }
     }
 }

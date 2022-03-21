@@ -69,19 +69,8 @@ namespace PROJET1.View
             tabControl.SelectedTab = tabAb;
         }
 
-        private void materialLabel1_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void materialLabel2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void grpAjout_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+    
     }
 }
