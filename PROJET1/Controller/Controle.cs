@@ -48,12 +48,30 @@ namespace PROJET1.Controller
             }
             
         }
-
+        /// <summary>
+        /// Appelle la méthode GetLesPersonnels d'AccesDonnees,
+        /// et en retourne le resultat.
+        /// </summary>
+        /// <returns>Liste des personnels de la BDD</returns>
         public List<Personnel> GetLesPersonnels()
         {
             
             
             return AccesDonnees.GetLesPersonnels();
+        }
+        /// <summary>
+        /// Appelle la méthode GetLesServices d'AccesDonnees,
+        /// et en retourne le résultat.
+        /// </summary>
+        /// <returns>Liste des services de la BDD</returns>
+        public List<Service> GetLesServices()
+        {
+            return AccesDonnees.GetLesServices();
+        }
+
+        public void AjoutPersonnel(Personnel lePersonnel)
+        {
+            AccesDonnees.AjoutPersonnel(lePersonnel);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace PROJET1.Model
     /// <summary>
     /// Classe métier des personnels.
     /// </summary>
-    class Service
+    public class Service
     {
         private readonly int IdService;
         private readonly string Nom;
@@ -22,6 +22,11 @@ namespace PROJET1.Model
 
         public int IdService1 { get => IdService; }
         public string Nom1 { get => Nom;  }
+
+        public override string ToString()
+        {
+            return this.Nom;
+        }
     }
 }
 

@@ -10,7 +10,7 @@ namespace PROJET1.View
     public partial class Main : MaterialForm
     {
         private BindingSource bdsPersonnel = new BindingSource();
-        private BindingSource bdsService;
+        private BindingSource bdsService = new BindingSource();
 
         private Controle controle;
         public Main(Controle controle)
@@ -18,6 +18,7 @@ namespace PROJET1.View
             this.controle = controle;
             InitializeComponent();
             InitLesPersonnels();
+            InitLesServices();
         }
 
       
@@ -25,13 +26,23 @@ namespace PROJET1.View
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             grpAjout.Enabled = true;
+            dataPersonnel.Enabled = false;
+            grpMain.Enabled = false;
         }
 
         private void btnAjoutConfirmer_Click(object sender, EventArgs e)
         {
             if (VerifChampsAjout())
             {
+                int idpersonnel = 0;
+                Service leService = (Service)bdsService.List[bdsService.Position];
+                Personnel newPersonnel = new Personnel(idpersonnel, leService.Nom1, leService.IdService1, txtNom.Text, txtPrenom.Text, txtTel.Text, txtMail.Text);
+                controle.AjoutPersonnel(newPersonnel);
+                InitLesPersonnels();
+                ResetChampsAjout();
                 
+                grpMain.Enabled = true;
+                dataPersonnel.Enabled = true;
 
             }
             else
@@ -45,6 +56,9 @@ namespace PROJET1.View
         private void btnAjoutAnnuler_Click(object sender, EventArgs e)
         {
             ResetChampsAjout();
+            grpMain.Enabled = true;
+            dataPersonnel.Enabled = true;
+
         }
         /// <summary>
         /// Réinitialise les champs de la fonction d'ajout de personnel.
@@ -56,6 +70,7 @@ namespace PROJET1.View
             txtTel.Text = "";
             txtMail.Text = "";
             lblAjoutInfo.Text = "";
+            cbService.SelectedIndex = 0;
             grpAjout.Enabled = false;
         }
         /// <summary>
@@ -78,7 +93,10 @@ namespace PROJET1.View
         {
             tabControl.SelectedTab = tabAb;
         }
-
+        /// <summary>
+        /// récupère tous les personnels,
+        /// et rempli la DataGridView
+        /// </summary>
         private void InitLesPersonnels()
         {
             List<Personnel> lesPersonnels = controle.GetLesPersonnels();
@@ -87,9 +105,16 @@ namespace PROJET1.View
             dataPersonnel.DataSource = bdsPersonnel;
             dataPersonnel.Columns["idpersonnel"].Visible = false;
             dataPersonnel.Columns["idservice"].Visible = false;
-            dataPersonnel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataPersonnel.Columns["nom"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataPersonnel.Columns["prenom"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataPersonnel.Columns["mail"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+        private void InitLesServices()
+        {
+            List<Service> lesServices = controle.GetLesServices();
+            bdsService.DataSource = lesServices;
+            cbService.DataSource = bdsService;
         }
 
-      
     }
 }
