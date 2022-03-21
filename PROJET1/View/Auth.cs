@@ -42,13 +42,23 @@ namespace PROJET1.View
         {
             if(txtLogin.Text == "" || txtPwd.Text == "")
             {
-                lblLoginInfo.Text = "Veuillez renseigner tous les champs";
-                lblLoginInfo.Visible = true;
+                MaterialSnackBar message = new MaterialSnackBar("Veuillez renseigner tous les champs", "OK", true);
+                
+                message.Show(this);
             }
             else
             {
-                lblLoginInfo.Text = "";
-                lblLoginInfo.Visible = false;
+                if(controle.Authentification(txtLogin.Text, txtPwd.Text))
+                {
+
+
+                }
+                else
+                {
+                    MaterialSnackBar message = new MaterialSnackBar("Identifiants incorrects.", "OK", true);
+                    message.Show(this);
+
+                }
             }
         }
 

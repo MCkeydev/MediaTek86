@@ -16,9 +16,9 @@ namespace PROJET1.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
-             //new Controle();
-            
+            //Application.Run(new Main());
+             new Controle();
+
         }
     }
 }
