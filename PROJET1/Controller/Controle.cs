@@ -109,5 +109,10 @@ namespace PROJET1.Controller
         {
             return AccesDonnees.GetMotifs();
         }
+
+        public void AjoutAbsence(Absence absence)
+        {
+            AccesDonnees.AjoutAbsence(absence);
+        }
     }
 }

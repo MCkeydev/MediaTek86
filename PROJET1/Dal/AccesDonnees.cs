@@ -112,17 +112,22 @@ namespace PROJET1.Dal
 
         }
         /// <summary>
-        /// Supprime une personnel de la base de Données
+        /// Supprime une personnel de la base de Données,
+        /// supprime aussi les absences correspondantes
         /// </summary>
         /// <param name="idpersonnel"></param>
 
         public static void SupprPersonnel(int idpersonnel)
         {
             string request = "DELETE FROM personnel WHERE idpersonnel = @idpersonnel";
+            string requestAbsence = "DELETE FROM absence WHERE idpersonnel = @idpersonnel";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@idpersonnel", idpersonnel);
             ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
+            c.Update(requestAbsence, parameters);
             c.Update(request, parameters);
+            
+            
         }
         /// <summary>
         /// Modifie un personnel dans la base de données
@@ -179,6 +184,21 @@ namespace PROJET1.Dal
             }
             c.Close();
             return lesMotifs;
+        }
+        /// <summary>
+        /// Ajoute une absence.
+        /// </summary>
+        /// <param name="absence">Object correspondant à l'absence à insérer</param>
+        public static void AjoutAbsence(Absence absence)
+        {
+            string request = "INSERT INTO absence(idpersonnel, datedebut, idmotif, datefin) VALUES(@idpersonnel, @datedebut, @idmotif, @datefin)";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", absence.IdPersonnel);
+            parameters.Add("@datedebut", DateTime.Parse(absence.DateDebut));
+            parameters.Add("@idmotif", absence.IdMotif);
+            parameters.Add("@datefin", DateTime.Parse(absence.DateFin));
+            ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
+            c.Update(request, parameters);
         }
    
     }

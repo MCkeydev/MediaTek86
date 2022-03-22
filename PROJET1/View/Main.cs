@@ -9,11 +9,17 @@ namespace PROJET1.View
 {
     public partial class Main : MaterialForm
     {
+
         private BindingSource bdsPersonnel = new BindingSource();
         private BindingSource bdsService = new BindingSource();
         private BindingSource bdsAbsence = new BindingSource();
         private BindingSource bdsMotif = new BindingSource();
         private bool enModif = false;
+        /// <summary>
+        /// Id du personnel sélectionné dans la section Absence.
+        /// Permet la réalisation des requêtes sur la table Absences.
+        /// </summary>
+        private Personnel curPersonnel;
 
         private Controle controle;
         public Main(Controle controle)
@@ -127,14 +133,11 @@ namespace PROJET1.View
             else
             {
                 Personnel lePersonnel = (Personnel)bdsPersonnel[bdsPersonnel.Position];
+                this.curPersonnel = lePersonnel;
                 lblAbsenceNom.Text = lePersonnel.Nom.ToUpper() + " " + lePersonnel.Prenom;
                 InitAbsences(lePersonnel);
                 tabControl.SelectedTab = tabAb;
-                dataAbsence.Columns["idpersonnel"].Visible = false;
-                dataAbsence.Columns["idmotif"].Visible = false;
-                dataAbsence.Columns["datedebut"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                dataAbsence.Columns["datefin"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                dataAbsence.Columns["motif"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                
             }
             
         }
@@ -241,7 +244,12 @@ namespace PROJET1.View
             dataAbsence.DataSource = bdsAbsence;
             dataAbsence.Columns["datedebut"].HeaderText = "Date Début";
             dataAbsence.Columns["datefin"].HeaderText = "Date Fin";
-
+            dataAbsence.Columns["idpersonnel"].Visible = false;
+            dataAbsence.Columns["idmotif"].Visible = false;
+            dataAbsence.Columns["datedebut"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataAbsence.Columns["datefin"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataAbsence.Columns["motif"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            grpAb.Enabled = false;
         }
         /// <summary>
         /// Initialise la ComboBox des Motifs.
@@ -250,6 +258,56 @@ namespace PROJET1.View
         {
             bdsMotif.DataSource = controle.GetMotifs();
             cboMotif.DataSource = bdsMotif;
+        }
+
+        private void materialFloatingActionButton1_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedTab = tabPersonnel;
+        }
+
+        private void btnAbAjouter_Click(object sender, EventArgs e)
+        {
+            grpAb.Enabled = true;
+            grpAbBtn.Enabled = false;
+            dataAbsence.Enabled = false;
+        }
+
+        private void btnAbCancel_Click(object sender, EventArgs e)
+        {
+            resetAjoutDate();
+
+        }
+
+        private void btnAbSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Motif leMotif = (Motif)bdsMotif[bdsMotif.Position];
+                Absence absence = new Absence(curPersonnel.IdPersonnel, dateTimePicker1.Value, leMotif.IdMotif, dateTimePicker2.Value, leMotif.Libelle);
+                controle.AjoutAbsence(absence);
+                InitAbsences(curPersonnel);
+                resetAjoutDate();
+             
+
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            
+        }
+        /// <summary>
+        /// Réinitialise les champs 
+        /// de la section d'ajout d'absence.
+        /// </summary>
+        private void resetAjoutDate()
+        {
+            grpAb.Enabled = false;
+            grpAbBtn.Enabled = true;
+            dataAbsence.Enabled = true;
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = DateTime.Now.AddDays(1);
+            cboMotif.SelectedIndex = 0;
         }
     }
 }
