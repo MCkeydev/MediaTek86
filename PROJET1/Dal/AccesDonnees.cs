@@ -111,5 +111,75 @@ namespace PROJET1.Dal
 
 
         }
+        /// <summary>
+        /// Supprime une personnel de la base de Données
+        /// </summary>
+        /// <param name="idpersonnel"></param>
+
+        public static void SupprPersonnel(int idpersonnel)
+        {
+            string request = "DELETE FROM personnel WHERE idpersonnel = @idpersonnel";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", idpersonnel);
+            ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
+            c.Update(request, parameters);
+        }
+        /// <summary>
+        /// Modifie un personnel dans la base de données
+        /// </summary>
+        /// <param name="lePersonnel">Personnel avec les nouvelles informations</param>
+        public static void ModifPersonnel(Personnel lePersonnel)
+        {
+            string request = "UPDATE personnel SET idservice = @idservice, nom = @nom, prenom = @prenom, tel = @tel, mail = @mail WHERE idpersonnel = @idpersonnel";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", lePersonnel.IdPersonnel);
+            parameters.Add("@idservice", lePersonnel.IdService);
+            parameters.Add("@nom", lePersonnel.Nom);
+            parameters.Add("@prenom", lePersonnel.Prenom);
+            parameters.Add("@tel", lePersonnel.Tel);
+            parameters.Add("@mail", lePersonnel.Mail);
+            ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
+            c.Update(request, parameters);
+        }
+        /// <summary>
+        /// Recupère la liste des absences d'un personnel dans la BDD.
+        /// </summary>
+        /// <param name="lePersonnel">Personnel identifiant les absences</param>
+        /// <returns>Liste des absences.</returns>
+        public static List<Absence> GetAbsences(Personnel lePersonnel)
+        {
+            string request = "SELECT a.*, m.libelle as motif FROM absence a JOIN motif m ON a.idmotif = m.idmotif WHERE idpersonnel = @idpersonnel ORDER BY datedebut DESC";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", lePersonnel.IdPersonnel);
+            ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
+            c.Select(request, parameters);
+            List<Absence> lesAbsences = new List<Absence>();
+            while (c.Read())
+            {
+                Absence absence = new Absence((int)c.Field("idpersonnel"), (DateTime)c.Field("datedebut"),(int)c.Field("idmotif"), (DateTime)c.Field("datefin"), (string)c.Field("motif"));
+                lesAbsences.Add(absence);
+            }
+            c.Close();
+            return lesAbsences;
+        }
+        /// <summary>
+        /// Récupère la liste des motifs dans la base de données
+        /// </summary>
+        /// <returns>liste des motifs</returns>
+        public static List<Motif> GetMotifs()
+        {
+            string request = "SELECT * FROM motif";
+            ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
+            c.Select(request, null);
+            List<Motif> lesMotifs = new List<Motif>();
+            while (c.Read())
+            {
+                Motif motif = new Motif((int)c.Field("idmotif"), (string)c.Field("libelle"));
+                lesMotifs.Add(motif);
+            }
+            c.Close();
+            return lesMotifs;
+        }
+   
     }
 }

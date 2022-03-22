@@ -9,19 +9,20 @@ namespace PROJET1.Model
     /// <summary>
     /// Classe Métier des absences.
     /// </summary>
-    class Motif
+    public class Motif
     {
-        private readonly int IdMotif;
-        private readonly string Libelle;
+        private readonly int idMotif;
+        private readonly string libelle;
 
         public Motif(int idMotif, string libelle)
         {
-            IdMotif = idMotif;
-            Libelle = libelle;
+            this.idMotif = idMotif;
+            this.libelle = libelle;
+        }
+        public override string ToString()
+        {
+            return this.libelle;
         }
 
-        public int IdMotif1 => IdMotif;
-
-        public string Libelle1 => Libelle;
     }
 }

@@ -41,6 +41,11 @@ namespace PROJET1.View
             this.grpAjout = new MaterialSkin.Controls.MaterialExpansionPanel();
             this.tabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPersonnel = new System.Windows.Forms.TabPage();
+            this.grpMain = new MaterialSkin.Controls.MaterialExpansionPanel();
+            this.btnAbsences = new MaterialSkin.Controls.MaterialButton();
+            this.btnSupprimer = new MaterialSkin.Controls.MaterialButton();
+            this.btnModifier = new MaterialSkin.Controls.MaterialButton();
+            this.btnAjouter = new MaterialSkin.Controls.MaterialButton();
             this.tabAb = new System.Windows.Forms.TabPage();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.btnAbSave = new MaterialSkin.Controls.MaterialButton();
@@ -50,32 +55,28 @@ namespace PROJET1.View
             this.btnAbCancel = new MaterialSkin.Controls.MaterialButton();
             this.lblDateFin = new MaterialSkin.Controls.MaterialLabel();
             this.lblDateMotif = new MaterialSkin.Controls.MaterialLabel();
-            this.materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
+            this.cboMotif = new MaterialSkin.Controls.MaterialComboBox();
             this.btnAbSupprimer = new MaterialSkin.Controls.MaterialButton();
             this.btnAbModifier = new MaterialSkin.Controls.MaterialButton();
             this.btnAbAjouter = new MaterialSkin.Controls.MaterialButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataAbsence = new System.Windows.Forms.DataGridView();
             this.lblAbsenceNom = new MaterialSkin.Controls.MaterialLabel();
             this.lblAbsence1 = new MaterialSkin.Controls.MaterialLabel();
-            this.btnSupprimer = new MaterialSkin.Controls.MaterialButton();
-            this.btnAbsences = new MaterialSkin.Controls.MaterialButton();
-            this.btnModifier = new MaterialSkin.Controls.MaterialButton();
-            this.btnAjouter = new MaterialSkin.Controls.MaterialButton();
-            this.grpMain = new MaterialSkin.Controls.MaterialExpansionPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dataPersonnel)).BeginInit();
             this.grpAjout.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPersonnel.SuspendLayout();
+            this.grpMain.SuspendLayout();
             this.tabAb.SuspendLayout();
             this.materialCard1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.grpMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataAbsence)).BeginInit();
             this.SuspendLayout();
             // 
             // dataPersonnel
             // 
             this.dataPersonnel.AllowUserToResizeRows = false;
             this.dataPersonnel.BackgroundColor = System.Drawing.Color.White;
+            this.dataPersonnel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataPersonnel.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataPersonnel.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataPersonnel.GridColor = System.Drawing.Color.White;
@@ -293,6 +294,119 @@ namespace PROJET1.View
             this.tabPersonnel.TabIndex = 0;
             this.tabPersonnel.Text = "Personnels";
             // 
+            // grpMain
+            // 
+            this.grpMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.grpMain.CancelButtonText = "";
+            this.grpMain.CausesValidation = false;
+            this.grpMain.Controls.Add(this.btnAbsences);
+            this.grpMain.Controls.Add(this.btnSupprimer);
+            this.grpMain.Controls.Add(this.btnModifier);
+            this.grpMain.Controls.Add(this.btnAjouter);
+            this.grpMain.Depth = 0;
+            this.grpMain.Description = "";
+            this.grpMain.DrawShadows = false;
+            this.grpMain.ExpandHeight = 204;
+            this.grpMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.grpMain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.grpMain.Location = new System.Drawing.Point(0, 388);
+            this.grpMain.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
+            this.grpMain.MouseState = MaterialSkin.MouseState.HOVER;
+            this.grpMain.Name = "grpMain";
+            this.grpMain.Padding = new System.Windows.Forms.Padding(24, 64, 24, 16);
+            this.grpMain.ShowCollapseExpand = false;
+            this.grpMain.ShowValidationButtons = false;
+            this.grpMain.Size = new System.Drawing.Size(503, 204);
+            this.grpMain.TabIndex = 6;
+            this.grpMain.Title = "";
+            this.grpMain.ValidationButtonText = "";
+            // 
+            // btnAbsences
+            // 
+            this.btnAbsences.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAbsences.BackColor = System.Drawing.Color.White;
+            this.btnAbsences.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAbsences.Depth = 0;
+            this.btnAbsences.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAbsences.HighEmphasis = true;
+            this.btnAbsences.Icon = null;
+            this.btnAbsences.Location = new System.Drawing.Point(301, 9);
+            this.btnAbsences.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAbsences.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAbsences.Name = "btnAbsences";
+            this.btnAbsences.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAbsences.Size = new System.Drawing.Size(202, 36);
+            this.btnAbsences.TabIndex = 4;
+            this.btnAbsences.Text = "Gestionnaire Absences";
+            this.btnAbsences.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAbsences.UseAccentColor = false;
+            this.btnAbsences.UseVisualStyleBackColor = false;
+            this.btnAbsences.Click += new System.EventHandler(this.btnAbsences_Click);
+            // 
+            // btnSupprimer
+            // 
+            this.btnSupprimer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSupprimer.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnSupprimer.Depth = 0;
+            this.btnSupprimer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSupprimer.HighEmphasis = true;
+            this.btnSupprimer.Icon = null;
+            this.btnSupprimer.Location = new System.Drawing.Point(192, 9);
+            this.btnSupprimer.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnSupprimer.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnSupprimer.Name = "btnSupprimer";
+            this.btnSupprimer.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnSupprimer.Size = new System.Drawing.Size(102, 36);
+            this.btnSupprimer.TabIndex = 3;
+            this.btnSupprimer.Text = "Supprimer";
+            this.btnSupprimer.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnSupprimer.UseAccentColor = false;
+            this.btnSupprimer.UseVisualStyleBackColor = true;
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
+            // 
+            // btnModifier
+            // 
+            this.btnModifier.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnModifier.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnModifier.Depth = 0;
+            this.btnModifier.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnModifier.HighEmphasis = true;
+            this.btnModifier.Icon = null;
+            this.btnModifier.Location = new System.Drawing.Point(96, 9);
+            this.btnModifier.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnModifier.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnModifier.Name = "btnModifier";
+            this.btnModifier.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnModifier.Size = new System.Drawing.Size(88, 36);
+            this.btnModifier.TabIndex = 2;
+            this.btnModifier.Text = "Modifier";
+            this.btnModifier.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnModifier.UseAccentColor = false;
+            this.btnModifier.UseVisualStyleBackColor = true;
+            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
+            // 
+            // btnAjouter
+            // 
+            this.btnAjouter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAjouter.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAjouter.Depth = 0;
+            this.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAjouter.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAjouter.HighEmphasis = true;
+            this.btnAjouter.Icon = null;
+            this.btnAjouter.Location = new System.Drawing.Point(3, 9);
+            this.btnAjouter.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAjouter.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAjouter.Name = "btnAjouter";
+            this.btnAjouter.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAjouter.Size = new System.Drawing.Size(85, 36);
+            this.btnAjouter.TabIndex = 1;
+            this.btnAjouter.Text = "Ajouter";
+            this.btnAjouter.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAjouter.UseAccentColor = false;
+            this.btnAjouter.UseVisualStyleBackColor = true;
+            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
+            // 
             // tabAb
             // 
             this.tabAb.BackColor = System.Drawing.Color.White;
@@ -300,7 +414,7 @@ namespace PROJET1.View
             this.tabAb.Controls.Add(this.btnAbSupprimer);
             this.tabAb.Controls.Add(this.btnAbModifier);
             this.tabAb.Controls.Add(this.btnAbAjouter);
-            this.tabAb.Controls.Add(this.dataGridView1);
+            this.tabAb.Controls.Add(this.dataAbsence);
             this.tabAb.Controls.Add(this.lblAbsenceNom);
             this.tabAb.Controls.Add(this.lblAbsence1);
             this.tabAb.Location = new System.Drawing.Point(4, 22);
@@ -320,15 +434,15 @@ namespace PROJET1.View
             this.materialCard1.Controls.Add(this.btnAbCancel);
             this.materialCard1.Controls.Add(this.lblDateFin);
             this.materialCard1.Controls.Add(this.lblDateMotif);
-            this.materialCard1.Controls.Add(this.materialComboBox1);
+            this.materialCard1.Controls.Add(this.cboMotif);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(277, 84);
+            this.materialCard1.Location = new System.Drawing.Point(386, 84);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(470, 316);
+            this.materialCard1.Size = new System.Drawing.Size(384, 316);
             this.materialCard1.TabIndex = 11;
             // 
             // btnAbSave
@@ -338,7 +452,7 @@ namespace PROJET1.View
             this.btnAbSave.Depth = 0;
             this.btnAbSave.HighEmphasis = true;
             this.btnAbSave.Icon = null;
-            this.btnAbSave.Location = new System.Drawing.Point(359, 260);
+            this.btnAbSave.Location = new System.Drawing.Point(263, 260);
             this.btnAbSave.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAbSave.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAbSave.Name = "btnAbSave";
@@ -352,16 +466,16 @@ namespace PROJET1.View
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(246, 104);
+            this.dateTimePicker2.Location = new System.Drawing.Point(197, 104);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(170, 20);
             this.dateTimePicker2.TabIndex = 12;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(17, 104);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(165, 20);
             this.dateTimePicker1.TabIndex = 11;
             // 
             // lblDateDeb
@@ -383,7 +497,7 @@ namespace PROJET1.View
             this.btnAbCancel.Depth = 0;
             this.btnAbCancel.HighEmphasis = true;
             this.btnAbCancel.Icon = null;
-            this.btnAbCancel.Location = new System.Drawing.Point(264, 260);
+            this.btnAbCancel.Location = new System.Drawing.Point(173, 260);
             this.btnAbCancel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAbCancel.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAbCancel.Name = "btnAbCancel";
@@ -400,7 +514,7 @@ namespace PROJET1.View
             this.lblDateFin.AutoSize = true;
             this.lblDateFin.Depth = 0;
             this.lblDateFin.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblDateFin.Location = new System.Drawing.Point(243, 82);
+            this.lblDateFin.Location = new System.Drawing.Point(194, 82);
             this.lblDateFin.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblDateFin.Name = "lblDateFin";
             this.lblDateFin.Size = new System.Drawing.Size(57, 19);
@@ -419,27 +533,27 @@ namespace PROJET1.View
             this.lblDateMotif.TabIndex = 10;
             this.lblDateMotif.Text = "Motif ";
             // 
-            // materialComboBox1
+            // cboMotif
             // 
-            this.materialComboBox1.AutoResize = false;
-            this.materialComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialComboBox1.Depth = 0;
-            this.materialComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.materialComboBox1.DropDownHeight = 174;
-            this.materialComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.materialComboBox1.DropDownWidth = 121;
-            this.materialComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.materialComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialComboBox1.FormattingEnabled = true;
-            this.materialComboBox1.IntegralHeight = false;
-            this.materialComboBox1.ItemHeight = 43;
-            this.materialComboBox1.Location = new System.Drawing.Point(20, 173);
-            this.materialComboBox1.MaxDropDownItems = 4;
-            this.materialComboBox1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialComboBox1.Name = "materialComboBox1";
-            this.materialComboBox1.Size = new System.Drawing.Size(426, 49);
-            this.materialComboBox1.StartIndex = 0;
-            this.materialComboBox1.TabIndex = 9;
+            this.cboMotif.AutoResize = false;
+            this.cboMotif.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cboMotif.Depth = 0;
+            this.cboMotif.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboMotif.DropDownHeight = 174;
+            this.cboMotif.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMotif.DropDownWidth = 121;
+            this.cboMotif.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cboMotif.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cboMotif.FormattingEnabled = true;
+            this.cboMotif.IntegralHeight = false;
+            this.cboMotif.ItemHeight = 43;
+            this.cboMotif.Location = new System.Drawing.Point(20, 173);
+            this.cboMotif.MaxDropDownItems = 4;
+            this.cboMotif.MouseState = MaterialSkin.MouseState.OUT;
+            this.cboMotif.Name = "cboMotif";
+            this.cboMotif.Size = new System.Drawing.Size(331, 49);
+            this.cboMotif.StartIndex = 0;
+            this.cboMotif.TabIndex = 9;
             // 
             // btnAbSupprimer
             // 
@@ -449,12 +563,12 @@ namespace PROJET1.View
             this.btnAbSupprimer.Depth = 0;
             this.btnAbSupprimer.HighEmphasis = true;
             this.btnAbSupprimer.Icon = null;
-            this.btnAbSupprimer.Location = new System.Drawing.Point(598, 37);
+            this.btnAbSupprimer.Location = new System.Drawing.Point(654, 37);
             this.btnAbSupprimer.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAbSupprimer.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAbSupprimer.Name = "btnAbSupprimer";
             this.btnAbSupprimer.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAbSupprimer.Size = new System.Drawing.Size(149, 36);
+            this.btnAbSupprimer.Size = new System.Drawing.Size(116, 36);
             this.btnAbSupprimer.TabIndex = 5;
             this.btnAbSupprimer.Text = "Supprimer";
             this.btnAbSupprimer.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -469,12 +583,12 @@ namespace PROJET1.View
             this.btnAbModifier.Depth = 0;
             this.btnAbModifier.HighEmphasis = true;
             this.btnAbModifier.Icon = null;
-            this.btnAbModifier.Location = new System.Drawing.Point(424, 37);
+            this.btnAbModifier.Location = new System.Drawing.Point(530, 37);
             this.btnAbModifier.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAbModifier.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAbModifier.Name = "btnAbModifier";
             this.btnAbModifier.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAbModifier.Size = new System.Drawing.Size(166, 36);
+            this.btnAbModifier.Size = new System.Drawing.Size(116, 36);
             this.btnAbModifier.TabIndex = 4;
             this.btnAbModifier.Text = "Modifier";
             this.btnAbModifier.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -489,7 +603,7 @@ namespace PROJET1.View
             this.btnAbAjouter.Depth = 0;
             this.btnAbAjouter.HighEmphasis = true;
             this.btnAbAjouter.Icon = null;
-            this.btnAbAjouter.Location = new System.Drawing.Point(277, 37);
+            this.btnAbAjouter.Location = new System.Drawing.Point(386, 37);
             this.btnAbAjouter.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAbAjouter.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAbAjouter.Name = "btnAbAjouter";
@@ -501,14 +615,22 @@ namespace PROJET1.View
             this.btnAbAjouter.UseAccentColor = false;
             this.btnAbAjouter.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dataAbsence
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 37);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(251, 363);
-            this.dataGridView1.TabIndex = 2;
+            this.dataAbsence.AllowUserToResizeColumns = false;
+            this.dataAbsence.AllowUserToResizeRows = false;
+            this.dataAbsence.BackgroundColor = System.Drawing.Color.White;
+            this.dataAbsence.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataAbsence.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataAbsence.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataAbsence.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataAbsence.GridColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataAbsence.Location = new System.Drawing.Point(9, 37);
+            this.dataAbsence.Name = "dataAbsence";
+            this.dataAbsence.RowHeadersVisible = false;
+            this.dataAbsence.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataAbsence.Size = new System.Drawing.Size(370, 363);
+            this.dataAbsence.TabIndex = 2;
             // 
             // lblAbsenceNom
             // 
@@ -535,117 +657,6 @@ namespace PROJET1.View
             this.lblAbsence1.TabIndex = 0;
             this.lblAbsence1.Text = "Absences de :";
             // 
-            // btnSupprimer
-            // 
-            this.btnSupprimer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSupprimer.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnSupprimer.Depth = 0;
-            this.btnSupprimer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSupprimer.HighEmphasis = true;
-            this.btnSupprimer.Icon = null;
-            this.btnSupprimer.Location = new System.Drawing.Point(192, 9);
-            this.btnSupprimer.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnSupprimer.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnSupprimer.Name = "btnSupprimer";
-            this.btnSupprimer.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnSupprimer.Size = new System.Drawing.Size(102, 36);
-            this.btnSupprimer.TabIndex = 3;
-            this.btnSupprimer.Text = "Supprimer";
-            this.btnSupprimer.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnSupprimer.UseAccentColor = false;
-            this.btnSupprimer.UseVisualStyleBackColor = true;
-            // 
-            // btnAbsences
-            // 
-            this.btnAbsences.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAbsences.BackColor = System.Drawing.Color.White;
-            this.btnAbsences.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnAbsences.Depth = 0;
-            this.btnAbsences.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAbsences.HighEmphasis = true;
-            this.btnAbsences.Icon = null;
-            this.btnAbsences.Location = new System.Drawing.Point(301, 9);
-            this.btnAbsences.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnAbsences.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnAbsences.Name = "btnAbsences";
-            this.btnAbsences.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAbsences.Size = new System.Drawing.Size(202, 36);
-            this.btnAbsences.TabIndex = 4;
-            this.btnAbsences.Text = "Gestionnaire Absences";
-            this.btnAbsences.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnAbsences.UseAccentColor = false;
-            this.btnAbsences.UseVisualStyleBackColor = false;
-            this.btnAbsences.Click += new System.EventHandler(this.btnAbsences_Click);
-            // 
-            // btnModifier
-            // 
-            this.btnModifier.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnModifier.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnModifier.Depth = 0;
-            this.btnModifier.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnModifier.HighEmphasis = true;
-            this.btnModifier.Icon = null;
-            this.btnModifier.Location = new System.Drawing.Point(96, 9);
-            this.btnModifier.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnModifier.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnModifier.Name = "btnModifier";
-            this.btnModifier.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnModifier.Size = new System.Drawing.Size(88, 36);
-            this.btnModifier.TabIndex = 2;
-            this.btnModifier.Text = "Modifier";
-            this.btnModifier.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnModifier.UseAccentColor = false;
-            this.btnModifier.UseVisualStyleBackColor = true;
-            // 
-            // btnAjouter
-            // 
-            this.btnAjouter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAjouter.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnAjouter.Depth = 0;
-            this.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAjouter.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAjouter.HighEmphasis = true;
-            this.btnAjouter.Icon = null;
-            this.btnAjouter.Location = new System.Drawing.Point(3, 9);
-            this.btnAjouter.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnAjouter.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAjouter.Size = new System.Drawing.Size(85, 36);
-            this.btnAjouter.TabIndex = 1;
-            this.btnAjouter.Text = "Ajouter";
-            this.btnAjouter.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnAjouter.UseAccentColor = false;
-            this.btnAjouter.UseVisualStyleBackColor = true;
-            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
-            // 
-            // grpMain
-            // 
-            this.grpMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.grpMain.CancelButtonText = "";
-            this.grpMain.CausesValidation = false;
-            this.grpMain.Controls.Add(this.btnAbsences);
-            this.grpMain.Controls.Add(this.btnSupprimer);
-            this.grpMain.Controls.Add(this.btnModifier);
-            this.grpMain.Controls.Add(this.btnAjouter);
-            this.grpMain.Depth = 0;
-            this.grpMain.Description = "";
-            this.grpMain.DrawShadows = false;
-            this.grpMain.ExpandHeight = 204;
-            this.grpMain.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.grpMain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.grpMain.Location = new System.Drawing.Point(0, 388);
-            this.grpMain.Margin = new System.Windows.Forms.Padding(3, 16, 3, 16);
-            this.grpMain.MouseState = MaterialSkin.MouseState.HOVER;
-            this.grpMain.Name = "grpMain";
-            this.grpMain.Padding = new System.Windows.Forms.Padding(24, 64, 24, 16);
-            this.grpMain.ShowCollapseExpand = false;
-            this.grpMain.ShowValidationButtons = false;
-            this.grpMain.Size = new System.Drawing.Size(503, 204);
-            this.grpMain.TabIndex = 6;
-            this.grpMain.Title = "";
-            this.grpMain.ValidationButtonText = "";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -663,13 +674,13 @@ namespace PROJET1.View
             this.grpAjout.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tabPersonnel.ResumeLayout(false);
+            this.grpMain.ResumeLayout(false);
+            this.grpMain.PerformLayout();
             this.tabAb.ResumeLayout(false);
             this.tabAb.PerformLayout();
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.grpMain.ResumeLayout(false);
-            this.grpMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataAbsence)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -694,12 +705,12 @@ namespace PROJET1.View
         private MaterialSkin.Controls.MaterialButton btnAbSupprimer;
         private MaterialSkin.Controls.MaterialButton btnAbModifier;
         private MaterialSkin.Controls.MaterialButton btnAbAjouter;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataAbsence;
         private MaterialSkin.Controls.MaterialButton btnAbCancel;
         private MaterialSkin.Controls.MaterialLabel lblDateFin;
         private MaterialSkin.Controls.MaterialLabel lblDateDeb;
         private MaterialSkin.Controls.MaterialLabel lblDateMotif;
-        private MaterialSkin.Controls.MaterialComboBox materialComboBox1;
+        private MaterialSkin.Controls.MaterialComboBox cboMotif;
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialButton btnAbSave;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;

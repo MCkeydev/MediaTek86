@@ -68,10 +68,46 @@ namespace PROJET1.Controller
         {
             return AccesDonnees.GetLesServices();
         }
-
+        /// <summary>
+        /// Appelle la méthode AjoutPersonnel
+        /// D'AccesDonnees
+        /// </summary>
+        /// <param name="lePersonnel">Nouveau Personnel à ajouter</param>
         public void AjoutPersonnel(Personnel lePersonnel)
         {
             AccesDonnees.AjoutPersonnel(lePersonnel);
+        }
+
+
+        /// <summary>
+        /// Appelle la méthode SupprPersonnel D'AccesDonnees
+        /// </summary>
+        /// <param name="idpersonnel">ID du personnel à supprimer</param>
+        public void SupprPersonnel(int idpersonnel)
+        {
+            AccesDonnees.SupprPersonnel(idpersonnel);
+        }
+
+        public void ModifPersonnel(Personnel lePersonnel)
+        {
+            AccesDonnees.ModifPersonnel(lePersonnel);
+        }
+        /// <summary>
+        /// Appelle la méthode GetAbsences d'AccesDonnees
+        /// </summary>
+        /// <param name="lePersonnel">Personnel dont il faut charger les absences.</param>
+        /// <returns>Liste des absences</returns>
+        public List<Absence> GetAbsences(Personnel lePersonnel)
+        {
+            return AccesDonnees.GetAbsences(lePersonnel);
+        }
+        /// <summary>
+        /// Appelle la méthode GetMotifs d'AccesDonnees.
+        /// </summary>
+        /// <returns>List des Motifs</returns>
+        public List<Motif> GetMotifs()
+        {
+            return AccesDonnees.GetMotifs();
         }
     }
 }

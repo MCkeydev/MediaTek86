@@ -11,24 +11,33 @@ namespace PROJET1.Model
     /// <summary>
     /// Classe Métier correspondant à la table Absence de la BDD.
     /// </summary>
-    class Absence
+    public class Absence
     {
-        private readonly int IdPersonnel;
-        private readonly string DateDebut;
-        private readonly int IdMotif;
-        private readonly string DateFin;
+        private readonly int idPersonnel;
+        private readonly DateTime dateDebut;
+        private readonly int idMotif;
+        private readonly DateTime dateFin;
+        private readonly string motif;
 
-        public Absence(int idPersonnel, string dateDebut, int idMotif, string dateFin)
+        public Absence(int idPersonnel, DateTime dateDebut, int idMotif, DateTime dateFin, string motif)
         {
-            IdPersonnel = idPersonnel;
-            DateDebut = dateDebut;
-            IdMotif = idMotif;
-            DateFin = dateFin;
+            this.idPersonnel = idPersonnel;
+            this.dateDebut = dateDebut;
+            this.idMotif = idMotif;
+            this.dateFin = dateFin;
+            this.motif = motif;
         }
 
-        public int IdPersonnel1 { get => IdPersonnel; }
-        public string DateDebut1 { get => DateDebut; }
-        public int IdMotif1 { get => IdMotif;  }
-        public string DateFin1 { get => DateFin;  }
+        public int IdPersonnel => idPersonnel;
+
+        public string DateDebut => dateDebut.ToLongDateString();
+
+        public int IdMotif => idMotif;
+
+        public string DateFin => dateFin.ToLongDateString();
+
+        public string Motif => motif;
+
+      
     }
 }
