@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/// <summary>
-/// summary
-/// </summary>
+
 namespace PROJET1.Model
 { 
     /// <summary>
@@ -19,6 +17,14 @@ namespace PROJET1.Model
         private readonly DateTime dateFin;
         private readonly string motif;
 
+        /// <summary>
+        /// Constructeur de la classe.
+        /// </summary>
+        /// <param name="idPersonnel"></param>
+        /// <param name="dateDebut"></param>
+        /// <param name="idMotif"></param>
+        /// <param name="dateFin"></param>
+        /// <param name="motif"></param>
         public Absence(int idPersonnel, DateTime dateDebut, int idMotif, DateTime dateFin, string motif)
         {
             this.idPersonnel = idPersonnel;
@@ -29,7 +35,7 @@ namespace PROJET1.Model
         }
 
         public int IdPersonnel => idPersonnel;
-
+       
         public string DateDebut => dateDebut.ToLongDateString();
 
         public int IdMotif => idMotif;

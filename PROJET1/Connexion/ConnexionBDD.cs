@@ -5,9 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
-/// <summary>
-/// Package de Connexion
-/// </summary>
+
 namespace PROJET1.Connexion
 {
     /// <summary>
@@ -117,6 +115,7 @@ namespace PROJET1.Connexion
             catch(Exception e)
             {
                 Debug.WriteLine(e.Message);
+                throw;
             }
         }
         /// <summary>

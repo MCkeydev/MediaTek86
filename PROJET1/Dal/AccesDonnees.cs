@@ -6,9 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using PROJET1.Model;
-/// <summary>
-/// Package d'acces aux données
-/// </summary>
+
 namespace PROJET1.Dal
 {
     /// <summary>
@@ -197,6 +195,38 @@ namespace PROJET1.Dal
             parameters.Add("@datedebut", DateTime.Parse(absence.DateDebut));
             parameters.Add("@idmotif", absence.IdMotif);
             parameters.Add("@datefin", DateTime.Parse(absence.DateFin));
+            ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
+            c.Update(request, parameters);
+
+        }
+        /// <summary>
+        /// Supprime une absence
+        /// </summary>
+        /// <param name="absence">Object correspondant à l'absence à supprimer.</param>
+        public static void SupprAbsence(Absence absence)
+        {
+            string request = "DELETE FROM absence WHERE datedebut = @datedebut AND idpersonnel = @idpersonnel";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@datedebut", DateTime.Parse(absence.DateDebut));
+            parameters.Add("@idpersonnel", absence.IdPersonnel);
+            ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
+            c.Update(request, parameters);
+        }
+
+        /// <summary>
+        /// Modifie une absence
+        /// </summary>
+        /// <param name="oldAbsence">Ancienne absence à modifier</param>
+        /// <param name="newAbsence">Nouvelle absence modifiée</param>
+        public static void ModifAbsence(Absence oldAbsence, Absence newAbsence)
+        {
+            string request = "UPDATE absence SET datedebut = @datedebut, idmotif = @idmotif, datefin = @datefin WHERE idpersonnel = @idpersonnel AND datedebut = @olddatedebut";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@datedebut", DateTime.Parse(newAbsence.DateDebut));
+            parameters.Add("@idmotif", newAbsence.IdMotif);
+            parameters.Add("@datefin", DateTime.Parse(newAbsence.DateFin));
+            parameters.Add("@idpersonnel", newAbsence.IdPersonnel);
+            parameters.Add("@olddatedebut", DateTime.Parse(oldAbsence.DateDebut));
             ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
             c.Update(request, parameters);
         }

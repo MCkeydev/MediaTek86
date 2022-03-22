@@ -7,9 +7,7 @@ using PROJET1.Dal;
 using PROJET1.View;
 using System.Diagnostics;
 using PROJET1.Model;
-/// <summary>
-/// Package du controlleur
-/// </summary>
+
 namespace PROJET1.Controller
 {
     /// <summary>
@@ -87,7 +85,10 @@ namespace PROJET1.Controller
         {
             AccesDonnees.SupprPersonnel(idpersonnel);
         }
-
+        /// <summary>
+        /// Appelle la fonction ModifPersonnel d'AccesDonnees
+        /// </summary>
+        /// <param name="lePersonnel"></param>
         public void ModifPersonnel(Personnel lePersonnel)
         {
             AccesDonnees.ModifPersonnel(lePersonnel);
@@ -109,10 +110,32 @@ namespace PROJET1.Controller
         {
             return AccesDonnees.GetMotifs();
         }
-
+        /// <summary>
+        /// Appelle la méthode AjoutAbsence d'AccesDonnees.
+        /// </summary>
+        /// <returns></returns>
         public void AjoutAbsence(Absence absence)
         {
             AccesDonnees.AjoutAbsence(absence);
+
+        }
+        /// <summary>
+        /// Appelle la méthode SupprAbsence d'AccesDonnees
+        /// </summary>
+        /// <param name="absence"></param>
+        public void SupprAbsence(Absence absence)
+        {
+
+            AccesDonnees.SupprAbsence(absence);
+        }
+        /// <summary>
+        /// Appelle la méthode ModifAbsence d'AccesDonnees.
+        /// </summary>
+        /// <param name="oldAbsence"></param>
+        /// <param name="newAbsence"></param>
+        public void ModifAbsence(Absence oldAbsence, Absence newAbsence)
+        {
+            AccesDonnees.ModifAbsence(oldAbsence, newAbsence);
         }
     }
 }

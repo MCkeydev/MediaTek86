@@ -484,6 +484,7 @@ namespace PROJET1.View
             this.btnAbModifier.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAbModifier.UseAccentColor = false;
             this.btnAbModifier.UseVisualStyleBackColor = true;
+            this.btnAbModifier.Click += new System.EventHandler(this.btnAbModifier_Click);
             // 
             // btnAbSupprimer
             // 
@@ -505,6 +506,7 @@ namespace PROJET1.View
             this.btnAbSupprimer.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAbSupprimer.UseAccentColor = true;
             this.btnAbSupprimer.UseVisualStyleBackColor = true;
+            this.btnAbSupprimer.Click += new System.EventHandler(this.btnAbSupprimer_Click);
             // 
             // materialFloatingActionButton1
             // 

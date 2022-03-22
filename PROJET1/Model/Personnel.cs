@@ -18,7 +18,7 @@ namespace PROJET1.Model
         private readonly string tel;
         private readonly string mail;
         private readonly string service;
-        private List<Absence> lesAbsences;
+        
 
         public Personnel(int idPersonnel, string service, int idService, string nom, string prenom, string tel, string mail)
         {
@@ -30,7 +30,7 @@ namespace PROJET1.Model
             this.tel = tel;
             this.mail = mail;
           
-            this.LesAbsences = new List<Absence>();
+           
         }
 
         public int IdPersonnel => idPersonnel;
@@ -47,6 +47,6 @@ namespace PROJET1.Model
 
         public string Service => service;
 
-        internal List<Absence> LesAbsences { get => lesAbsences; set => lesAbsences = value; }
+        
     }
 }

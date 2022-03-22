@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Diagnostics;
+
+
 namespace PROJET1.View
 {
     public partial class Main : MaterialForm
@@ -15,6 +17,7 @@ namespace PROJET1.View
         private BindingSource bdsAbsence = new BindingSource();
         private BindingSource bdsMotif = new BindingSource();
         private bool enModif = false;
+        private bool enModifAbsence = false;
         /// <summary>
         /// Id du personnel sélectionné dans la section Absence.
         /// Permet la réalisation des requêtes sur la table Absences.
@@ -137,7 +140,7 @@ namespace PROJET1.View
                 lblAbsenceNom.Text = lePersonnel.Nom.ToUpper() + " " + lePersonnel.Prenom;
                 InitAbsences(lePersonnel);
                 tabControl.SelectedTab = tabAb;
-                
+                ResetAjoutDate();
             }
             
         }
@@ -148,7 +151,7 @@ namespace PROJET1.View
         private void InitLesPersonnels()
         {
             List<Personnel> lesPersonnels = controle.GetLesPersonnels();
-           ;
+           
             bdsPersonnel.DataSource = lesPersonnels;
             dataPersonnel.DataSource = bdsPersonnel;
             dataPersonnel.Columns["idpersonnel"].Visible = false;
@@ -238,8 +241,8 @@ namespace PROJET1.View
         /// <param name="lePersonnel">Personnel dont il faut charger les absences.</param>
         private void InitAbsences(Personnel lePersonnel)
         {
-            List<Absence> lesAbsences = new List<Absence>();
-            lesAbsences = controle.GetAbsences(lePersonnel);
+            List<Absence> lesAbsences = controle.GetAbsences(lePersonnel);
+            
             bdsAbsence.DataSource = lesAbsences;
             dataAbsence.DataSource = bdsAbsence;
             dataAbsence.Columns["datedebut"].HeaderText = "Date Début";
@@ -274,7 +277,7 @@ namespace PROJET1.View
 
         private void btnAbCancel_Click(object sender, EventArgs e)
         {
-            resetAjoutDate();
+            ResetAjoutDate();
 
         }
 
@@ -282,17 +285,32 @@ namespace PROJET1.View
         {
             try
             {
+               
                 Motif leMotif = (Motif)bdsMotif[bdsMotif.Position];
                 Absence absence = new Absence(curPersonnel.IdPersonnel, dateTimePicker1.Value, leMotif.IdMotif, dateTimePicker2.Value, leMotif.Libelle);
-                controle.AjoutAbsence(absence);
+                if (enModifAbsence)
+                {
+                    Absence ancienneAbsence = (Absence)bdsAbsence[bdsAbsence.Position];
+                    controle.ModifAbsence(ancienneAbsence, absence);
+                }
+                else
+                {
+                    controle.AjoutAbsence(absence);
+                }
+                
                 InitAbsences(curPersonnel);
-                resetAjoutDate();
+                ResetAjoutDate();
              
 
             }
             catch(Exception ex)
             {
-                Debug.WriteLine(ex.Message);
+                if(ex.Message == "Duplicata du champ '25-2022-03-22 00:00:00' pour la clef 'PRIMARY'")
+                {
+                    MaterialSnackBar message = new MaterialSnackBar("Impossible d'ajouter deux absences à la même date.", "OK", true);
+                    message.Show(this);
+                }
+                
             }
             
         }
@@ -300,7 +318,7 @@ namespace PROJET1.View
         /// Réinitialise les champs 
         /// de la section d'ajout d'absence.
         /// </summary>
-        private void resetAjoutDate()
+        private void ResetAjoutDate()
         {
             grpAb.Enabled = false;
             grpAbBtn.Enabled = true;
@@ -309,5 +327,57 @@ namespace PROJET1.View
             dateTimePicker2.Value = DateTime.Now.AddDays(1);
             cboMotif.SelectedIndex = 0;
         }
+
+        private void btnAbSupprimer_Click(object sender, EventArgs e)
+        {
+            if (VerifSelection(dataAbsence))
+            {
+                MaterialSnackBar message = new MaterialSnackBar("Veuillez selectionner un personnel", "OK", true);
+                message.Show(this);
+            }
+            else
+            {
+
+                MaterialDialog materialDialog = new MaterialDialog(this, "Supprimer", "Voulez vous vraiment supprimer ? Toute suppression est irréversible.", "Confirmer", true, "Annuler");
+                DialogResult result = materialDialog.ShowDialog(this);
+                if (((int)result) == 1)
+                {
+                    foreach(DataGridViewRow row in dataAbsence.SelectedRows)
+                    {
+                        Absence absence = (Absence)bdsAbsence[row.Index];
+                        controle.SupprAbsence(absence);
+                    }
+                    InitAbsences(curPersonnel);
+                    
+                }
+            }
+            }
+
+        private void btnAbModifier_Click(object sender, EventArgs e)
+        {
+            if (dataAbsence.SelectedRows.Count == 0)
+            {
+                MaterialSnackBar message = new MaterialSnackBar("Veuillez selectionner une absence", "OK", true);
+                message.Show(this);
+
+            }
+            else if (dataAbsence.SelectedRows.Count > 1)
+            {
+                MaterialSnackBar message = new MaterialSnackBar("Veuillez ne selectionner qu'une absence", "OK", true);
+                message.Show(this);
+            }
+            else
+            {
+                enModifAbsence = true;
+                grpAb.Enabled = true;
+                grpAbBtn.Enabled = false;
+                dataAbsence.Enabled = false;
+                Absence absence = (Absence)bdsAbsence[bdsAbsence.Position];
+                dateTimePicker1.Value = DateTime.Parse(absence.DateDebut);
+                dateTimePicker2.Value = DateTime.Parse(absence.DateFin);
+                cboMotif.SelectedIndex = cboMotif.FindStringExact(absence.Motif);
+            }
+        }
     }
 }
+ 
