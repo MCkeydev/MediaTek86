@@ -23,6 +23,10 @@ namespace PROJET1.Model
         public int IdService1 { get => IdService; }
         public string Nom1 { get => Nom;  }
 
+        /// <summary>
+        /// Override de la méthode ToString();
+        /// </summary>
+        /// <returns>Retourne le nom du Service</returns>
         public override string ToString()
         {
             return this.Nom;

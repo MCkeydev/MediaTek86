@@ -74,6 +74,11 @@ namespace PROJET1.Dal
             return lesPersonnels;
 
         }
+
+        /// <summary>
+        /// Retrouvela table 'Service' de la BDD
+        /// </summary>
+        /// <returns>Liste de Tous les services</returns>
         public static List<Service> GetLesServices()
         {
             string request = "SELECT * FROM service";

@@ -8,6 +8,9 @@ using PROJET1.View;
 using System.Diagnostics;
 using PROJET1.Model;
 
+/// <summary>
+/// Package du Controlleur
+/// </summary>
 namespace PROJET1.Controller
 {
     /// <summary>
@@ -19,10 +22,9 @@ namespace PROJET1.Controller
         private readonly Main FrmMain;
         public Controle()
         {
-            this.FrmMain = new Main(this);
-            this.FrmMain.ShowDialog();
-            //this.FrmAuth = new FrmAuth(this);
-            //this.FrmAuth.ShowDialog();
+            
+            this.FrmAuth = new FrmAuth(this);
+            this.FrmAuth.ShowDialog();
         }
         /// <summary>
         /// Appelle la méthode Authentification d'Acces donnees,

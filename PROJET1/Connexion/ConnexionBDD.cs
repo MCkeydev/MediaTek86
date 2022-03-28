@@ -54,7 +54,11 @@ namespace PROJET1.Connexion
             }
            
         }
-
+        /// <summary>
+        /// Récupère, ou crée l'instance unique de ConnexionBDD
+        /// </summary>
+        /// <param name="chaineConnexion">chaine de connexion à la base de donnée</param>
+        /// <returns>Instance unique de ConnexionBDD</returns>
         public static ConnexionBDD GetInstance(string chaineConnexion)
         {
         
