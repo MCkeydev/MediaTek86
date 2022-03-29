@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PROJET1.Controller;
-namespace PROJET1.View
+using Personnel.Controller;
+namespace Personnel.View
 {
     static class Program
     {

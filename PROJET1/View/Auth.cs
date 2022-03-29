@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
-using PROJET1.Controller;
+using Personnel.Controller;
 
-namespace PROJET1.View
+namespace Personnel.View
 
 {/// <summary>
 /// Formulaire WinForms qui permet l'authentification d'un utilisateur.

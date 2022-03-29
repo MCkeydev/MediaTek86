@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PROJET1.Properties {
+namespace Personnel.Properties {
     using System;
     
     

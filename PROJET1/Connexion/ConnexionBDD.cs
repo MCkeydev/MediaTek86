@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace PROJET1.Connexion
+namespace Personnel.Connexion
 {
     /// <summary>
     /// Classe de connexion à la base de donnée

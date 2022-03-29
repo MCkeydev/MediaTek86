@@ -1,5 +1,5 @@
 ﻿
-namespace PROJET1.View
+namespace Personnel.View
 
 {
     partial class FrmAuth

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PROJET1.Model
+namespace Personnel.Model
 { 
     /// <summary>
     /// Classe Métier correspondant à la table Absence de la BDD.
@@ -38,6 +38,7 @@ namespace PROJET1.Model
        
         public string DateDebut => dateDebut.ToLongDateString();
 
+        public DateTime VraiDateDebut => dateDebut;
         public int IdMotif => idMotif;
 
         public string DateFin => dateFin.ToLongDateString();

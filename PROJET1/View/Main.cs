@@ -1,13 +1,13 @@
 ﻿using MaterialSkin.Controls;
-using PROJET1.Controller;
-using PROJET1.Model;
+using Personnel.Controller;
+using Personnel.Model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Diagnostics;
 
 
-namespace PROJET1.View
+namespace Personnel.View
 {
     public partial class Main : MaterialForm
     {
@@ -22,7 +22,7 @@ namespace PROJET1.View
         /// Id du personnel sélectionné dans la section Absence.
         /// Permet la réalisation des requêtes sur la table Absences.
         /// </summary>
-        private Personnel curPersonnel;
+        private Model.Personnel curPersonnel;
 
         private Controle controle;
         public Main(Controle controle)
@@ -54,7 +54,7 @@ namespace PROJET1.View
                 }
               
                 Service leService = (Service)bdsService.List[bdsService.Position];
-                Personnel newPersonnel = new Personnel(idpersonnel, leService.Nom1, leService.IdService1, txtNom.Text, txtPrenom.Text, txtTel.Text, txtMail.Text);
+                Model.Personnel newPersonnel = new Model.Personnel(idpersonnel, leService.Nom1, leService.IdService1, txtNom.Text, txtPrenom.Text, txtTel.Text, txtMail.Text);
 
                 if (enModif)
                 {
@@ -135,7 +135,7 @@ namespace PROJET1.View
             }
             else
             {
-                Personnel lePersonnel = (Personnel)bdsPersonnel[bdsPersonnel.Position];
+                Model.Personnel lePersonnel = (Model.Personnel)bdsPersonnel[bdsPersonnel.Position];
                 this.curPersonnel = lePersonnel;
                 lblAbsenceNom.Text = lePersonnel.Nom.ToUpper() + " " + lePersonnel.Prenom;
                 InitAbsences(lePersonnel);
@@ -150,7 +150,7 @@ namespace PROJET1.View
         /// </summary>
         private void InitLesPersonnels()
         {
-            List<Personnel> lesPersonnels = controle.GetLesPersonnels();
+            List<Model.Personnel> lesPersonnels = controle.GetLesPersonnels();
            
             bdsPersonnel.DataSource = lesPersonnels;
             dataPersonnel.DataSource = bdsPersonnel;
@@ -215,7 +215,7 @@ namespace PROJET1.View
                 grpAjout.Enabled = true;
                 grpMain.Enabled = false;
                 dataPersonnel.Enabled = false;
-                Personnel lePersonnel = (Personnel)bdsPersonnel[bdsPersonnel.Position];
+                Model.Personnel lePersonnel = (Model.Personnel)bdsPersonnel[bdsPersonnel.Position];
                 txtNom.Text = lePersonnel.Nom;
                 txtPrenom.Text = lePersonnel.Prenom;
                 txtMail.Text = lePersonnel.Mail;
@@ -239,7 +239,7 @@ namespace PROJET1.View
         /// Remplit la DataGridView des Absences.
         /// </summary>
         /// <param name="lePersonnel">Personnel dont il faut charger les absences.</param>
-        private void InitAbsences(Personnel lePersonnel)
+        private void InitAbsences(Model.Personnel lePersonnel)
         {
             List<Absence> lesAbsences = controle.GetAbsences(lePersonnel);
             
@@ -249,6 +249,7 @@ namespace PROJET1.View
             dataAbsence.Columns["datefin"].HeaderText = "Date Fin";
             dataAbsence.Columns["idpersonnel"].Visible = false;
             dataAbsence.Columns["idmotif"].Visible = false;
+            dataAbsence.Columns["VraiDateDebut"].Visible = false;
             dataAbsence.Columns["datedebut"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataAbsence.Columns["datefin"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataAbsence.Columns["motif"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -342,6 +343,7 @@ namespace PROJET1.View
                 DialogResult result = materialDialog.ShowDialog(this);
                 if (((int)result) == 1)
                 {
+                   
                     foreach(DataGridViewRow row in dataAbsence.SelectedRows)
                     {
                         Absence absence = (Absence)bdsAbsence[row.Index];

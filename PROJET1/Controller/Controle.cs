@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PROJET1.Dal;
-using PROJET1.View;
+using Personnel.Dal;
+using Personnel.View;
 using System.Diagnostics;
-using PROJET1.Model;
+using Personnel.Model;
 
 /// <summary>
 /// Package du Controlleur
 /// </summary>
-namespace PROJET1.Controller
+namespace Personnel.Controller
 {
     /// <summary>
     /// Controlleur de l'application.
@@ -22,9 +22,12 @@ namespace PROJET1.Controller
         private readonly Main FrmMain;
         public Controle()
         {
-            
-            this.FrmAuth = new FrmAuth(this);
-            this.FrmAuth.ShowDialog();
+
+            //this.FrmAuth = new FrmAuth(this);
+            //this.FrmAuth.ShowDialog();
+            this.FrmMain = new Main(this);
+            this.FrmMain.ShowDialog();
+
         }
         /// <summary>
         /// Appelle la méthode Authentification d'Acces donnees,
@@ -53,7 +56,7 @@ namespace PROJET1.Controller
         /// et en retourne le resultat.
         /// </summary>
         /// <returns>Liste des personnels de la BDD</returns>
-        public List<Personnel> GetLesPersonnels()
+        public List<Model.Personnel> GetLesPersonnels()
         {
             
             
@@ -73,7 +76,7 @@ namespace PROJET1.Controller
         /// D'AccesDonnees
         /// </summary>
         /// <param name="lePersonnel">Nouveau Personnel à ajouter</param>
-        public void AjoutPersonnel(Personnel lePersonnel)
+        public void AjoutPersonnel(Model.Personnel lePersonnel)
         {
             AccesDonnees.AjoutPersonnel(lePersonnel);
         }
@@ -91,7 +94,7 @@ namespace PROJET1.Controller
         /// Appelle la fonction ModifPersonnel d'AccesDonnees
         /// </summary>
         /// <param name="lePersonnel"></param>
-        public void ModifPersonnel(Personnel lePersonnel)
+        public void ModifPersonnel(Model.Personnel lePersonnel)
         {
             AccesDonnees.ModifPersonnel(lePersonnel);
         }
@@ -100,7 +103,7 @@ namespace PROJET1.Controller
         /// </summary>
         /// <param name="lePersonnel">Personnel dont il faut charger les absences.</param>
         /// <returns>Liste des absences</returns>
-        public List<Absence> GetAbsences(Personnel lePersonnel)
+        public List<Absence> GetAbsences(Model.Personnel lePersonnel)
         {
             return AccesDonnees.GetAbsences(lePersonnel);
         }

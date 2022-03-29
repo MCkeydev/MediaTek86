@@ -1,13 +1,13 @@
-﻿using PROJET1.Connexion;
+﻿using Personnel.Connexion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using PROJET1.Model;
+using Personnel.Model;
 
-namespace PROJET1.Dal
+namespace Personnel.Dal
 {
     /// <summary>
     /// Classe Outil nous permettant d'obtenir les informations 
@@ -51,16 +51,16 @@ namespace PROJET1.Dal
         /// Retrouve la table 'personnel' de la BDD.
         /// </summary>
         /// <returns>Liste de tout le personnel.</returns>
-        public static List<Personnel> GetLesPersonnels()
+        public static List<Model.Personnel> GetLesPersonnels()
         {
             string request = "SELECT p.*, s.nom as service FROM personnel p JOIN service s ON p.idservice = s.idservice ";
             ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
             c.Select(request, null);
-            List<Personnel> lesPersonnels = new List<Personnel>();
+            List<Model.Personnel> lesPersonnels = new List<Model.Personnel>();
             while (c.Read())
             {
-                
-                Personnel lePersonnel = new Personnel((int)c.Field("idpersonnel"),
+
+                Model.Personnel lePersonnel = new Model.Personnel((int)c.Field("idpersonnel"),
                     (string)c.Field("service"),
                     (int)c.Field("idservice"),
                     (string)c.Field("nom"),
@@ -100,7 +100,7 @@ namespace PROJET1.Dal
         /// Permet d'ajouter un personnel à la base de données.
         /// </summary>
         /// <param name="lePersonnel">Personnel à ajouter</param>
-        public static void AjoutPersonnel(Personnel lePersonnel)
+        public static void AjoutPersonnel(Model.Personnel lePersonnel)
         {
             string request = "INSERT INTO personnel(idservice,nom, prenom, tel, mail) VALUES(@idservice, @nom, @prenom, @tel, @mail)";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -136,7 +136,7 @@ namespace PROJET1.Dal
         /// Modifie un personnel dans la base de données
         /// </summary>
         /// <param name="lePersonnel">Personnel avec les nouvelles informations</param>
-        public static void ModifPersonnel(Personnel lePersonnel)
+        public static void ModifPersonnel(Model.Personnel lePersonnel)
         {
             string request = "UPDATE personnel SET idservice = @idservice, nom = @nom, prenom = @prenom, tel = @tel, mail = @mail WHERE idpersonnel = @idpersonnel";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -154,7 +154,7 @@ namespace PROJET1.Dal
         /// </summary>
         /// <param name="lePersonnel">Personnel identifiant les absences</param>
         /// <returns>Liste des absences.</returns>
-        public static List<Absence> GetAbsences(Personnel lePersonnel)
+        public static List<Absence> GetAbsences(Model.Personnel lePersonnel)
         {
             string request = "SELECT a.*, m.libelle as motif FROM absence a JOIN motif m ON a.idmotif = m.idmotif WHERE idpersonnel = @idpersonnel ORDER BY datedebut DESC";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -166,6 +166,7 @@ namespace PROJET1.Dal
             {
                 Absence absence = new Absence((int)c.Field("idpersonnel"), (DateTime)c.Field("datedebut"),(int)c.Field("idmotif"), (DateTime)c.Field("datefin"), (string)c.Field("motif"));
                 lesAbsences.Add(absence);
+               
             }
             c.Close();
             return lesAbsences;
@@ -210,10 +211,13 @@ namespace PROJET1.Dal
         /// <param name="absence">Object correspondant à l'absence à supprimer.</param>
         public static void SupprAbsence(Absence absence)
         {
+            
             string request = "DELETE FROM absence WHERE datedebut = @datedebut AND idpersonnel = @idpersonnel";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("@datedebut", DateTime.Parse(absence.DateDebut));
+            parameters.Add("@datedebut", absence.VraiDateDebut);
+            Debug.WriteLine(DateTime.Parse(absence.DateDebut));
             parameters.Add("@idpersonnel", absence.IdPersonnel);
+            Debug.WriteLine(absence.IdPersonnel);
             ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
             c.Update(request, parameters);
         }
