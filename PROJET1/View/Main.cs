@@ -1,13 +1,13 @@
 ﻿using MaterialSkin.Controls;
-using Personnel.Controller;
-using Personnel.Model;
+using Gestion.Controller;
+using Gestion.Model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Diagnostics;
 
 
-namespace Personnel.View
+namespace Gestion.View
 {
     public partial class Main : MaterialForm
     {
@@ -54,7 +54,7 @@ namespace Personnel.View
                 }
               
                 Service leService = (Service)bdsService.List[bdsService.Position];
-                Model.Personnel newPersonnel = new Model.Personnel(idpersonnel, leService.Nom1, leService.IdService1, txtNom.Text, txtPrenom.Text, txtTel.Text, txtMail.Text);
+                Personnel newPersonnel = new Personnel(idpersonnel, leService.Nom1, leService.IdService1, txtNom.Text, txtPrenom.Text, txtTel.Text, txtMail.Text);
 
                 if (enModif)
                 {
@@ -245,12 +245,12 @@ namespace Personnel.View
             
             bdsAbsence.DataSource = lesAbsences;
             dataAbsence.DataSource = bdsAbsence;
-            dataAbsence.Columns["datedebut"].HeaderText = "Date Début";
+            dataAbsence.Columns["longuedatedebut"].HeaderText = "Date Début";
             dataAbsence.Columns["datefin"].HeaderText = "Date Fin";
             dataAbsence.Columns["idpersonnel"].Visible = false;
             dataAbsence.Columns["idmotif"].Visible = false;
-            dataAbsence.Columns["VraiDateDebut"].Visible = false;
-            dataAbsence.Columns["datedebut"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataAbsence.Columns["DateDebut"].Visible = false;
+            dataAbsence.Columns["longuedatedebut"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataAbsence.Columns["datefin"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataAbsence.Columns["motif"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             grpAb.Enabled = false;
@@ -306,7 +306,7 @@ namespace Personnel.View
             }
             catch(Exception ex)
             {
-                if(ex.Message == "Duplicata du champ '25-2022-03-22 00:00:00' pour la clef 'PRIMARY'")
+                if(ex.Message.Contains("Duplicata du champ"))
                 {
                     MaterialSnackBar message = new MaterialSnackBar("Impossible d'ajouter deux absences à la même date.", "OK", true);
                     message.Show(this);
@@ -375,7 +375,7 @@ namespace Personnel.View
                 grpAbBtn.Enabled = false;
                 dataAbsence.Enabled = false;
                 Absence absence = (Absence)bdsAbsence[bdsAbsence.Position];
-                dateTimePicker1.Value = DateTime.Parse(absence.DateDebut);
+                dateTimePicker1.Value = absence.DateDebut;
                 dateTimePicker2.Value = DateTime.Parse(absence.DateFin);
                 cboMotif.SelectedIndex = cboMotif.FindStringExact(absence.Motif);
             }

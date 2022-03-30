@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Personnel.Dal;
-using Personnel.View;
+using Gestion.Dal;
+using Gestion.View;
 using System.Diagnostics;
-using Personnel.Model;
+using Gestion.Model;
 
-/// <summary>
-/// Package du Controlleur
-/// </summary>
-namespace Personnel.Controller
+
+namespace Gestion.Controller
 {
     /// <summary>
     /// Controlleur de l'application.
@@ -23,11 +21,9 @@ namespace Personnel.Controller
         public Controle()
         {
 
-            //this.FrmAuth = new FrmAuth(this);
-            //this.FrmAuth.ShowDialog();
-            this.FrmMain = new Main(this);
-            this.FrmMain.ShowDialog();
-
+            this.FrmAuth = new FrmAuth(this);
+            this.FrmAuth.ShowDialog();
+           
         }
         /// <summary>
         /// Appelle la méthode Authentification d'Acces donnees,

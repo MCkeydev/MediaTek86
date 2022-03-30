@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Personnel.Model
+namespace Gestion.Model
 {
     /// <summary>
     /// Classe représentant chaque personnel.

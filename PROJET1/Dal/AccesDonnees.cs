@@ -1,13 +1,13 @@
-﻿using Personnel.Connexion;
+﻿using Gestion.Connexion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using Personnel.Model;
+using Gestion.Model;
 
-namespace Personnel.Dal
+namespace Gestion.Dal
 {
     /// <summary>
     /// Classe Outil nous permettant d'obtenir les informations 
@@ -19,7 +19,7 @@ namespace Personnel.Dal
         /// chaine de connexion au SGBDR
         /// </summary>
         private static string chaineConnexion = "server=localhost;user id=personnel;password=motdepasse;persistsecurityinfo=True;database=personnel";
-       
+
         /// <summary>
         /// Effectue une requête SELECT sur la table 'responsable'.
         /// </summary>
@@ -34,7 +34,7 @@ namespace Personnel.Dal
             parameters.Add("@pwd", pwd);
             ConnexionBDD connexion = ConnexionBDD.GetInstance(chaineConnexion);
             connexion.Select(request, parameters);
-           
+
             if (connexion.Read())
             {
                 connexion.Close();
@@ -46,21 +46,21 @@ namespace Personnel.Dal
                 return false;
             }
         }
-        
+
         /// <summary>
         /// Retrouve la table 'personnel' de la BDD.
         /// </summary>
         /// <returns>Liste de tout le personnel.</returns>
-        public static List<Model.Personnel> GetLesPersonnels()
+        public static List<Personnel> GetLesPersonnels()
         {
             string request = "SELECT p.*, s.nom as service FROM personnel p JOIN service s ON p.idservice = s.idservice ";
             ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
             c.Select(request, null);
-            List<Model.Personnel> lesPersonnels = new List<Model.Personnel>();
+            List<Personnel> lesPersonnels = new List<Personnel>();
             while (c.Read())
             {
 
-                Model.Personnel lePersonnel = new Model.Personnel((int)c.Field("idpersonnel"),
+                Personnel lePersonnel = new Personnel((int)c.Field("idpersonnel"),
                     (string)c.Field("service"),
                     (int)c.Field("idservice"),
                     (string)c.Field("nom"),
@@ -100,7 +100,7 @@ namespace Personnel.Dal
         /// Permet d'ajouter un personnel à la base de données.
         /// </summary>
         /// <param name="lePersonnel">Personnel à ajouter</param>
-        public static void AjoutPersonnel(Model.Personnel lePersonnel)
+        public static void AjoutPersonnel(Personnel lePersonnel)
         {
             string request = "INSERT INTO personnel(idservice,nom, prenom, tel, mail) VALUES(@idservice, @nom, @prenom, @tel, @mail)";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -129,14 +129,14 @@ namespace Personnel.Dal
             ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
             c.Update(requestAbsence, parameters);
             c.Update(request, parameters);
-            
-            
+
+
         }
         /// <summary>
         /// Modifie un personnel dans la base de données
         /// </summary>
         /// <param name="lePersonnel">Personnel avec les nouvelles informations</param>
-        public static void ModifPersonnel(Model.Personnel lePersonnel)
+        public static void ModifPersonnel(Personnel lePersonnel)
         {
             string request = "UPDATE personnel SET idservice = @idservice, nom = @nom, prenom = @prenom, tel = @tel, mail = @mail WHERE idpersonnel = @idpersonnel";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -154,7 +154,7 @@ namespace Personnel.Dal
         /// </summary>
         /// <param name="lePersonnel">Personnel identifiant les absences</param>
         /// <returns>Liste des absences.</returns>
-        public static List<Absence> GetAbsences(Model.Personnel lePersonnel)
+        public static List<Absence> GetAbsences(Personnel lePersonnel)
         {
             string request = "SELECT a.*, m.libelle as motif FROM absence a JOIN motif m ON a.idmotif = m.idmotif WHERE idpersonnel = @idpersonnel ORDER BY datedebut DESC";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -164,9 +164,9 @@ namespace Personnel.Dal
             List<Absence> lesAbsences = new List<Absence>();
             while (c.Read())
             {
-                Absence absence = new Absence((int)c.Field("idpersonnel"), (DateTime)c.Field("datedebut"),(int)c.Field("idmotif"), (DateTime)c.Field("datefin"), (string)c.Field("motif"));
+                Absence absence = new Absence((int)c.Field("idpersonnel"), (DateTime)c.Field("datedebut"), (int)c.Field("idmotif"), (DateTime)c.Field("datefin"), (string)c.Field("motif"));
                 lesAbsences.Add(absence);
-               
+
             }
             c.Close();
             return lesAbsences;
@@ -198,7 +198,7 @@ namespace Personnel.Dal
             string request = "INSERT INTO absence(idpersonnel, datedebut, idmotif, datefin) VALUES(@idpersonnel, @datedebut, @idmotif, @datefin)";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@idpersonnel", absence.IdPersonnel);
-            parameters.Add("@datedebut", DateTime.Parse(absence.DateDebut));
+            parameters.Add("@datedebut", absence.DateDebut);
             parameters.Add("@idmotif", absence.IdMotif);
             parameters.Add("@datefin", DateTime.Parse(absence.DateFin));
             ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
@@ -211,13 +211,13 @@ namespace Personnel.Dal
         /// <param name="absence">Object correspondant à l'absence à supprimer.</param>
         public static void SupprAbsence(Absence absence)
         {
-            
-            string request = "DELETE FROM absence WHERE datedebut = @datedebut AND idpersonnel = @idpersonnel";
+
+            string request = "DELETE FROM absence WHERE DATE(datedebut) = Date(@datedebut) AND idpersonnel = @idpersonnel";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("@datedebut", absence.VraiDateDebut);
-            Debug.WriteLine(DateTime.Parse(absence.DateDebut));
+            parameters.Add("@datedebut", absence.DateDebut);
+
             parameters.Add("@idpersonnel", absence.IdPersonnel);
-            Debug.WriteLine(absence.IdPersonnel);
+
             ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
             c.Update(request, parameters);
         }
@@ -231,14 +231,14 @@ namespace Personnel.Dal
         {
             string request = "UPDATE absence SET datedebut = @datedebut, idmotif = @idmotif, datefin = @datefin WHERE idpersonnel = @idpersonnel AND datedebut = @olddatedebut";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("@datedebut", DateTime.Parse(newAbsence.DateDebut));
+            parameters.Add("@datedebut", newAbsence.DateDebut);
             parameters.Add("@idmotif", newAbsence.IdMotif);
             parameters.Add("@datefin", DateTime.Parse(newAbsence.DateFin));
             parameters.Add("@idpersonnel", newAbsence.IdPersonnel);
-            parameters.Add("@olddatedebut", DateTime.Parse(oldAbsence.DateDebut));
+            parameters.Add("@olddatedebut", oldAbsence.DateDebut);
             ConnexionBDD c = ConnexionBDD.GetInstance(chaineConnexion);
             c.Update(request, parameters);
         }
-   
+
     }
 }

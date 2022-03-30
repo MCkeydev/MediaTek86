@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
-using Personnel.Controller;
+using Gestion.Controller;
+using System.Diagnostics;
 
-namespace Personnel.View
+namespace Gestion.View
 
 {/// <summary>
 /// Formulaire WinForms qui permet l'authentification d'un utilisateur.
@@ -50,14 +51,12 @@ namespace Personnel.View
             {
                 if(controle.Authentification(txtLogin.Text, txtPwd.Text))
                 {
-
-
+                    Debug.WriteLine("Login Success");
                 }
                 else
                 {
                     MaterialSnackBar message = new MaterialSnackBar("Identifiants incorrects.", "OK", true);
                     message.Show(this);
-
                 }
             }
         }

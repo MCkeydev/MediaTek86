@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Personnel.Properties {
+namespace Gestion.Properties {
     using System;
     
     

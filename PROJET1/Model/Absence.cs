@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Personnel.Model
+namespace Gestion.Model
 { 
     /// <summary>
     /// Classe Métier correspondant à la table Absence de la BDD.
@@ -35,10 +35,17 @@ namespace Personnel.Model
         }
 
         public int IdPersonnel => idPersonnel;
-       
-        public string DateDebut => dateDebut.ToLongDateString();
+      
+        /// <summary>
+        /// Méthode qui retourne une chaîne formatée de la date de début de l'absence.
+        /// Elle permet d'afficher la date dans la datagridview.
+        /// </summary>
+        public string LongueDateDebut => dateDebut.ToLongDateString();
 
-        public DateTime VraiDateDebut => dateDebut;
+        /// <summary>
+        /// Retourne la date exacte au format DateTime.
+        /// </summary>
+        public DateTime DateDebut => dateDebut.Date;
         public int IdMotif => idMotif;
 
         public string DateFin => dateFin.ToLongDateString();

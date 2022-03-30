@@ -1,5 +1,5 @@
 ﻿
-namespace Personnel.View
+namespace Gestion.View
 {
     partial class Main
     {
@@ -511,7 +511,7 @@ namespace Personnel.View
             // materialFloatingActionButton1
             // 
             this.materialFloatingActionButton1.Depth = 0;
-            this.materialFloatingActionButton1.Icon = global::Personnel.Properties.Resources.Method_Draw_Image;
+            this.materialFloatingActionButton1.Icon = global::Gestion.Properties.Resources.Method_Draw_Image;
             this.materialFloatingActionButton1.Location = new System.Drawing.Point(9, 377);
             this.materialFloatingActionButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFloatingActionButton1.Name = "materialFloatingActionButton1";
