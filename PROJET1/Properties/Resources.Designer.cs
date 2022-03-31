@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Gestion.Properties {
+namespace PROJET1.Properties {
     using System;
     
     
@@ -66,6 +66,16 @@ namespace Gestion.Properties {
         internal static System.Drawing.Bitmap Method_Draw_Image {
             get {
                 object obj = ResourceManager.GetObject("Method Draw Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Method_Draw_Image1 {
+            get {
+                object obj = ResourceManager.GetObject("Method Draw Image1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

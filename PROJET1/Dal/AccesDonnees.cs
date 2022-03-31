@@ -212,7 +212,7 @@ namespace Gestion.Dal
         public static void SupprAbsence(Absence absence)
         {
 
-            string request = "DELETE FROM absence WHERE DATE(datedebut) = Date(@datedebut) AND idpersonnel = @idpersonnel";
+            string request = "DELETE FROM absence WHERE DATE(datedebut) = DATE(@datedebut) AND idpersonnel = @idpersonnel";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@datedebut", absence.DateDebut);
 
