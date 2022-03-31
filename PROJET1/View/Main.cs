@@ -321,6 +321,7 @@ namespace Gestion.View
         /// </summary>
         private void ResetAjoutDate()
         {
+            enModifAbsence = false;
             grpAb.Enabled = false;
             grpAbBtn.Enabled = true;
             dataAbsence.Enabled = true;
